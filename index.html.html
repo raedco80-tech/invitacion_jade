@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Invitación - Mis 15 Años</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; background-color: #fdf6f9; padding: 40px; }
+        .tarjeta { background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); max-width: 400px; margin: auto; border-top: 5px solid #d883b7; }
+        h2 { color: #5a5a5a; }
+        input, select, button { width: 100%; margin-top: 15px; padding: 12px; border-radius: 8px; border: 1px solid #ddd; box-sizing: border-box; font-size: 16px; }
+        button { background-color: #d883b7; color: white; border: none; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        button:hover { background-color: #c0659b; }
+    </style>
+</head>
+<body>
+    <div class="tarjeta">
+        <h2>✨ Mis 15 Años - Jade ✨</h2>
+        <p>¡Me encantaría que me acompañes en este día tan especial!</p>
+        
+        <!-- Aquí conectamos con tu base de datos -->
+        <form action="https://script.google.com/macros/s/AKfycbx8X1zxAu4YhVToldzIHjW2YxdABQfOYZ0ZA-1DdQMMLEXr3gpHlRGq0o9gF2FYKqy5UQ/exec" method="POST">
+            <input type="text" name="nombre" placeholder="Nombre completo o Familia" required>
+            
+            <select name="asistencia">
+                <option value="Sí, ahí estaré">Sí, ahí estaré</option>
+                <option value="No podré asistir">No podré asistir</option>
+            </select>
+            
+            <input type="text" name="restricciones" placeholder="Alergias o restricciones (Ej. Ninguna)" value="Ninguna">
+            
+            <button type="submit">Confirmar Asistencia</button>
+        </form>
+    </div>
+</body>
+</html>
