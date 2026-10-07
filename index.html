@@ -16,7 +16,42 @@
     <div class="tarjeta">
         <h2>✨ Mis 15 Años - Jade ✨</h2>
         <p>¡Me encantaría que me acompañes en este día tan especial!</p>
-        
+<!-- INICIO DE LA CUENTA REGRESIVA -->
+        <div style="margin: 30px 0; padding: 20px; background-color: #fffafc; border-radius: 10px; border: 1px dashed #d883b7;">
+            <h3 style="color: #d883b7; margin-top: 0; font-style: italic;">Faltan</h3>
+            <div id="reloj" style="display: flex; justify-content: space-around; font-weight: bold; color: #5a5a5a;">
+                <div><span id="dias" style="font-size: 28px;">00</span><br><span style="font-size: 12px; font-weight: normal;">Días</span></div>
+                <div><span id="horas" style="font-size: 28px;">00</span><br><span style="font-size: 12px; font-weight: normal;">Horas</span></div>
+                <div><span id="minutos" style="font-size: 28px;">00</span><br><span style="font-size: 12px; font-weight: normal;">Minutos</span></div>
+                <div><span id="segundos" style="font-size: 28px;">00</span><br><span style="font-size: 12px; font-weight: normal;">Segundos</span></div>
+            </div>
+        </div>
+
+        <script>
+            // VARIABLE MAESTRA: Cambia la fecha y hora aquí para tus futuros clientes
+            const fechaEvento = new Date("December 29, 2026 20:00:00").getTime();
+
+            const temporizador = setInterval(function() {
+                const ahora = new Date().getTime();
+                const distancia = fechaEvento - ahora;
+
+                const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+                const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+                const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+
+                document.getElementById("dias").innerText = dias < 10 ? "0" + dias : dias;
+                document.getElementById("horas").innerText = horas < 10 ? "0" + horas : horas;
+                document.getElementById("minutos").innerText = minutos < 10 ? "0" + minutos : minutos;
+                document.getElementById("segundos").innerText = segundos < 10 ? "0" + segundos : segundos;
+
+                if (distancia < 0) {
+                    clearInterval(temporizador);
+                    document.getElementById("reloj").innerHTML = "<span style='font-size: 20px; color: #d883b7;'>¡El gran día ha llegado!</span>";
+                }
+            }, 1000);
+        </script>
+        <!-- FIN DE LA CUENTA REGRESIVA -->        
         <!-- Aquí conectamos con tu base de datos -->
         <form action="https://script.google.com/macros/s/AKfycbx8X1zxAu4YhVToldzIHjW2YxdABQfOYZ0ZA-1DdQMMLEXr3gpHlRGq0o9gF2FYKqy5UQ/exec" method="POST">
             <input type="text" name="nombre" placeholder="Nombre completo o Familia" required>
