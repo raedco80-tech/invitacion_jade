@@ -2,69 +2,210 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Invitación - Mis 15 Años</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación Especial</title>
+    <!-- Importar fuentes elegantes de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; background-color: #fdf6f9; padding: 40px; }
-        .tarjeta { background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); max-width: 400px; margin: auto; border-top: 5px solid #d883b7; }
-        h2 { color: #5a5a5a; }
-        input, select, button { width: 100%; margin-top: 15px; padding: 12px; border-radius: 8px; border: 1px solid #ddd; box-sizing: border-box; font-size: 16px; }
-        button { background-color: #d883b7; color: white; border: none; font-weight: bold; cursor: pointer; transition: 0.3s; }
-        button:hover { background-color: #c0659b; }
+        /* ========================================================================= */
+        /* ZONA DE CONFIGURACIÓN DE DISEÑO (PARA CAMBIAR CON CADA CLIENTE)           */
+        /* ========================================================================= */
+        :root {
+            /* Colores principales */
+            --color-principal: #d883b7; /* Rosa oscuro - Cambiar según temática */
+            --color-texto: #ffffff;
+            --color-fondo-tarjeta: rgba(255, 255, 255, 0.85); /* Blanco semitransparente */
+            --color-texto-oscuro: #333333;
+            
+            /* Fondo de la invitación (Cambia este enlace por la imagen de paisaje que quieras) */
+            --imagen-fondo: url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=2070&auto=format&fit=crop'); 
+        }
+        /* ========================================================================= */
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: var(--imagen-fondo);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--color-texto-oscuro);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Capa oscura sobre el fondo para que el texto resalte */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            z-index: -1;
+        }
+
+        .contenedor-principal {
+            width: 90%;
+            max-width: 600px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .seccion {
+            background-color: var(--color-fondo-tarjeta);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            backdrop-filter: blur(5px);
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--color-principal);
+            margin-top: 0;
+        }
+
+        h1 { font-size: 3em; margin-bottom: 10px; }
+        h2 { font-size: 2em; margin-bottom: 20px; }
+
+        p { font-size: 1.1em; line-height: 1.6; }
+
+        /* Estilos del Reloj */
+        .reloj-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .reloj-bloque {
+            background-color: rgba(255,255,255,0.7);
+            border: 1px solid var(--color-principal);
+            border-radius: 10px;
+            padding: 15px 10px;
+            min-width: 60px;
+        }
+        .reloj-numero {
+            display: block;
+            font-size: 2em;
+            font-weight: 600;
+            font-family: 'Playfair Display', serif;
+            color: var(--color-principal);
+        }
+        .reloj-texto {
+            font-size: 0.8em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Estilos del Formulario */
+        input, select, button {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1em;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: var(--color-principal);
+            color: white;
+            border: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            opacity: 0.9;
+        }
     </style>
 </head>
 <body>
-    <div class="tarjeta">
-        <h2>✨ Mis 15 Años - Jade ✨</h2>
-        <p>¡Me encantaría que me acompañes en este día tan especial!</p>
-<!-- INICIO DE LA CUENTA REGRESIVA -->
-        <div style="margin: 30px 0; padding: 20px; background-color: #fffafc; border-radius: 10px; border: 1px dashed #d883b7;">
-            <h3 style="color: #d883b7; margin-top: 0; font-style: italic;">Faltan</h3>
-            <div id="reloj" style="display: flex; justify-content: space-around; font-weight: bold; color: #5a5a5a;">
-                <div><span id="dias" style="font-size: 28px;">00</span><br><span style="font-size: 12px; font-weight: normal;">Días</span></div>
-                <div><span id="horas" style="font-size: 28px;">00</span><br><span style="font-size: 12px; font-weight: normal;">Horas</span></div>
-                <div><span id="minutos" style="font-size: 28px;">00</span><br><span style="font-size: 12px; font-weight: normal;">Minutos</span></div>
-                <div><span id="segundos" style="font-size: 28px;">00</span><br><span style="font-size: 12px; font-weight: normal;">Segundos</span></div>
-            </div>
+    <div class="overlay"></div>
+
+    <div class="contenedor-principal">
+        
+        <!-- SECCIÓN 1: BIENVENIDA -->
+        <div class="seccion">
+            <h2>Mis 15 Años</h2>
+            <h1 id="nombre-festejado">Jade</h1>
+            <p>Hay momentos en la vida que son especiales por sí solos, pero compartirlos con las personas que quieres los hace inolvidables.</p>
+            <p>¡Me encantaría que me acompañes en este día tan especial!</p>
         </div>
 
-        <script>
-            // VARIABLE MAESTRA: Cambia la fecha y hora aquí para tus futuros clientes
-            const fechaEvento = new Date("December 29, 2026 20:00:00").getTime();
+        <!-- SECCIÓN 2: CUENTA REGRESIVA -->
+        <div class="seccion">
+            <h3>Faltan</h3>
+            <div class="reloj-container" id="reloj">
+                <div class="reloj-bloque"><span class="reloj-numero" id="dias">00</span><span class="reloj-texto">Días</span></div>
+                <div class="reloj-bloque"><span class="reloj-numero" id="horas">00</span><span class="reloj-texto">Hrs</span></div>
+                <div class="reloj-bloque"><span class="reloj-numero" id="minutos">00</span><span class="reloj-texto">Min</span></div>
+                <div class="reloj-bloque"><span class="reloj-numero" id="segundos">00</span><span class="reloj-texto">Seg</span></div>
+            </div>
+            <p style="margin-top:20px; font-weight:600;" id="fecha-texto">29 de Diciembre, 2026</p>
+        </div>
 
-            const temporizador = setInterval(function() {
-                const ahora = new Date().getTime();
-                const distancia = fechaEvento - ahora;
-
-                const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
-                const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
-                const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
-
-                document.getElementById("dias").innerText = dias < 10 ? "0" + dias : dias;
-                document.getElementById("horas").innerText = horas < 10 ? "0" + horas : horas;
-                document.getElementById("minutos").innerText = minutos < 10 ? "0" + minutos : minutos;
-                document.getElementById("segundos").innerText = segundos < 10 ? "0" + segundos : segundos;
-
-                if (distancia < 0) {
-                    clearInterval(temporizador);
-                    document.getElementById("reloj").innerHTML = "<span style='font-size: 20px; color: #d883b7;'>¡El gran día ha llegado!</span>";
-                }
-            }, 1000);
-        </script>
-        <!-- FIN DE LA CUENTA REGRESIVA -->        
-        <!-- Aquí conectamos con tu base de datos -->
-        <form action="https://script.google.com/macros/s/AKfycbx8X1zxAu4YhVToldzIHjW2YxdABQfOYZ0ZA-1DdQMMLEXr3gpHlRGq0o9gF2FYKqy5UQ/exec" method="POST">
-            <input type="text" name="nombre" placeholder="Nombre completo o Familia" required>
+        <!-- SECCIÓN 3: CONFIRMACIÓN -->
+        <div class="seccion">
+            <h3>Confirmar Asistencia</h3>
+            <p>Por favor, confirma tu asistencia llenando este formulario.</p>
             
-            <select name="asistencia">
-                <option value="Sí, ahí estaré">Sí, ahí estaré</option>
-                <option value="No podré asistir">No podré asistir</option>
-            </select>
-            
-            <input type="text" name="restricciones" placeholder="Alergias o restricciones (Ej. Ninguna)" value="Ninguna">
-            
-            <button type="submit">Confirmar Asistencia</button>
-        </form>
+            <form action="https://script.google.com/macros/s/AKfycbx8X1zxAu4YhVToIdzIHjW2YxdA8QfOYZBZA-IDdQHMI_EXrJgqHI0Gq8s9gF2FYKqj5UQ/exec" method="POST">
+                <input type="text" name="nombre" placeholder="Nombre completo o Familia" required>
+                <select name="asistencia">
+                    <option value="Sí, ahí estaré">Sí, ahí estaré</option>
+                    <option value="No podré asistir">No podré asistir</option>
+                </select>
+                <input type="text" name="restricciones" placeholder="Alergias o restricciones (Ej. Ninguna)" value="Ninguna">
+                <button type="submit">Enviar Confirmación</button>
+            </form>
+        </div>
+
     </div>
+
+    <script>
+        // =========================================================================
+        // ZONA DE CONFIGURACIÓN DE DATOS (PARA CAMBIAR CON CADA CLIENTE)
+        // =========================================================================
+        // 1. Nombre del festejado
+        document.getElementById('nombre-festejado').innerText = "Jade";
+        
+        // 2. Fecha del evento en formato texto
+        document.getElementById('fecha-texto').innerText = "29 de Diciembre, 2026";
+
+        // 3. Fecha para el reloj regresivo (Mes en inglés, Día, Año Hora:Minutos:Segundos)
+        const fechaEvento = new Date("December 29, 2026 20:00:00").getTime();
+        // =========================================================================
+
+        // Lógica de la cuenta regresiva
+        const temporizador = setInterval(function() {
+            const ahora = new Date().getTime();
+            const distancia = fechaEvento - ahora;
+
+            const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+            const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+            const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+
+            document.getElementById("dias").innerText = dias < 10 ? "0" + dias : dias;
+            document.getElementById("horas").innerText = horas < 10 ? "0" + horas : horas;
+            document.getElementById("minutos").innerText = minutos < 10 ? "0" + minutos : minutos;
+            document.getElementById("segundos").innerText = segundos < 10 ? "0" + segundos : segundos;
+
+            if (distancia < 0) {
+                clearInterval(temporizador);
+                document.getElementById("reloj").innerHTML = "<h3 style='width:100%; text-align:center;'>¡El gran día ha llegado!</h3>";
+            }
+        }, 1000);
+    </script>
 </body>
 </html>
